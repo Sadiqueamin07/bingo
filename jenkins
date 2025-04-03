@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Deploy to S3') {
             steps {
-                withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
+                withAWS(credentials: 'aws-credentials', region: 'ap-south-1') {
                     s3Upload(file: 'index.html', bucket: 'mycontentnode.js', path: 'website/')
                 }
             }
