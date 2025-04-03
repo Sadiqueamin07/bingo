@@ -1,17 +1,16 @@
-pipeline{
-agent any
-
-stages {
-  stage('build with Version') {
-      steps {
-          sh "java --version"
-          sh "ls"
-      }
-      }
-  stage('Deploy') {
-        steps {
-           sh 'aws s3 cd index.html s3://mycontentnode.js"
-}
-}
-}
+pipeline {
+    agent any
+    stages {
+        stage('Build with Version') {
+            steps {
+                sh "java --version"
+                sh "ls || dir" // Handles both Linux (ls) and Windows (dir)
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh "aws s3 cp index.html s3://mycontentnode.js/"
+            }
+        }
+    }
 }
