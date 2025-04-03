@@ -1,0 +1,17 @@
+pipeline{
+agent any
+
+stages {
+  stage('build with Version') {
+      steps {
+          sh "java --version"
+          sh "ls"
+      }
+      }
+  stage('Deploy') {
+        steps {
+           sh 'aws s3 cd index.html s3://mycontentnode.js"
+}
+}
+}
+}
