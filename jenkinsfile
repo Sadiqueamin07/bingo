@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'content', url: 'https://github.com/Sadiqueamin07/bingo.git'
+            }
+        }
+        stage('Upload to S3') {
+            steps {
+                withAWS(credentials: 'Sadiqueam07@gmail.com', region: 'ap-south-1') {
+                    s3Upload(file: 'content/', bucket: 'my-image011', path: 'content/')
+                }
+            }
+        }
+    }
+}
