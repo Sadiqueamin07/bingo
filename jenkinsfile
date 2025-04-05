@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh "aws s3 cp Tiger.jpg s3://my-image011/"
+                sh "aws s3 cp lion.jpg s3://my-image011/"
             }
         }
        }
