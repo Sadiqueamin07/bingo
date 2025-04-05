@@ -1,16 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Build with Version') {
             steps {
-                git branch: 'content', url: 'https://github.com/Sadiqueamin07/bingo.git'
+                sh "java --version"
+                sh "ls || dir" // Handles both Linux (ls) and Windows (dir)
             }
         }
-        stage('Upload to S3') {
+        stage('Deploy') {
             steps {
-                withAWS(credentials: 'Sadiqueam07@gmail.com', region: 'ap-south-1') {
-                    s3Upload(file: 'content/', bucket: 'my-image011', path: 'content/')
-                }
+                sh "aws s3 cp lion.jpg s3://my-image011/"
             }
         }
     }
