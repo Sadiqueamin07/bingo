@@ -10,6 +10,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh "aws s3 cp index.html s3://mycontentnode.js/"
+                sh "aws s3 cp lion.jpg s3://my-image011/"
             }
         }
     }
