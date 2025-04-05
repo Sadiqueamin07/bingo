@@ -12,12 +12,6 @@ pipeline {
                 sh "aws s3 cp Tiger.jpg s3://my-image011/"
             }
         }
-        stage('Invalidate CloudFront Cache') {
-            steps {
-                withAWS(credentials: 'aws-credentials', region: 'ap-south-1') {
-                sh "aws cloudfront create-invalidation --distribution-id EG7CSBB05MRJX --paths '/*'"
-        }
+       }
     }
-}
-    }
-}
+
